@@ -19,15 +19,15 @@
                         $db_obj = new DatabaseAccess();
                         $exist_table_array = $db_obj->getAllTables();
                         $data_table_array = array();
-                        foreach (glob(DATA_SQL_ROOT.'/*_1.sql') as $sql_file) {
+                        foreach (glob(DATA_SQL_ROOT.'/*_00001.sql') as $sql_file) {
 
-                            $data_table_array[] = str_replace('_1.sql', '', str_replace(DATA_SQL_ROOT.'/', '', $sql_file));
+                            $data_table_array[] = str_replace('_00001.sql', '', str_replace(DATA_SQL_ROOT.'/', '', $sql_file));
 
                         }
 
                         foreach ($exist_table_array as $table_name) {
 
-                            $sql_path = DATA_SQL_ROOT.'/'.$table_name.'_1.sql';
+                            $sql_path = DATA_SQL_ROOT.'/'.$table_name.'_00001.sql';
                             $data_last_modify_time = $db_obj->getTableLastModifyTime($table_name);
                             $data_last_modify_time = !empty($data_last_modify_time) ? $data_last_modify_time : '--';
                             $file_last_modify_time = @filemtime($sql_path) ? date('Y/m/d H:i:s', filemtime($sql_path)) : '--';

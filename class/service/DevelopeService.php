@@ -210,7 +210,7 @@ class DevelopeService
 
     }// end function truncateData
 
-    public static function exportData($table_name, $length=5000)
+    public static function exportData($table_name, $length=1000)
     {
 
         $sql_path = DATA_SQL_ROOT.'/'.$table_name;
@@ -226,13 +226,6 @@ class DevelopeService
         $db_obj = new DatabaseAccess();
         $column_array = $db_obj->getTableColumns($table_name);
 
-        $sql_content = "INSERT INTO `$table_name`".PHP_EOL."(`id`, ";
-        foreach ($column_array as $column_name => $attribute) {
-            $sql_content .= "`$column_name`, ";
-        }
-        $sql_content .= "`is_deleted`, `create_time`, `modify_time`, `delete_time`)".PHP_EOL.
-                        "VALUES".PHP_EOL;
-
         $count_sql = "SELECT COUNT(1) AS cnt FROM `$table_name`";
         $query_instance = $db_obj->select($count_sql);
         $all_data_count = 0;
@@ -241,6 +234,13 @@ class DevelopeService
         }
 
         for ($page = 1; $page <= ceil($all_data_count / $length); $page++) {
+
+            $sql_content = "INSERT INTO `$table_name`".PHP_EOL."(`id`, ";
+            foreach ($column_array as $column_name => $attribute) {
+                $sql_content .= "`$column_name`, ";
+            }
+            $sql_content .= "`is_deleted`, `create_time`, `modify_time`, `delete_time`)".PHP_EOL.
+                            "VALUES".PHP_EOL;
 
             $offset = ($page - 1) * $length;
             $data_sql = "SELECT * FROM `$table_name` LIMIT $offset, $length";
@@ -251,7 +251,7 @@ class DevelopeService
                 $sql_content .= "('".$data['id']."', ";
                 foreach ($column_array as $column_name => $attribute) {
 
-                    $sql_content .= "'".$data[$column_name]."', ";
+                    $sql_content .= "'".str_replace("'", "\'", $data[$column_name])."', ";
 
                 }
                 $sql_content .= "'".$data['is_deleted']."', ".
@@ -262,7 +262,7 @@ class DevelopeService
 
             }
 
-            if (!self::file_put_contents($sql_path.'_'.$page.'.sql', substr($sql_content, 0, -2).';')) {
+            if (!self::file_put_contents($sql_path.'_'.sprintf('%05d', $page).'.sql', substr($sql_content, 0, -2).';')) {
 
                 return false;
 
@@ -285,7 +285,7 @@ class DevelopeService
 
         while (true) {
 
-            $sql_path = DATA_SQL_ROOT.'/'.$table_name.'_'.$page.'.sql';
+            $sql_path = DATA_SQL_ROOT.'/'.$table_name.'_'.sprintf('%05d', $page).'.sql';
 
             if (!file_exists($sql_path)) {
 
