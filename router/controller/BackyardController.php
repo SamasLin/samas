@@ -20,6 +20,7 @@ class BackyardController
         $page_title = '';
         $view_path  = '';
         $nav_config = $this->default_nav;
+        $page_data  = array();
 
         switch ($action_id) {
 
@@ -35,7 +36,7 @@ class BackyardController
 
         }
 
-        PJAXLoader::run($page_title, $view_path, $nav_config);
+        PJAXLoader::run($page_title, $view_path, $nav_config, $page_data);
 
     }// end function get
 
@@ -46,6 +47,7 @@ class BackyardController
         $page_title = '';
         $view_path  = '';
         $nav_config = $this->default_nav;
+        $page_data  = array();
 
         switch ($action_id) {
 
@@ -57,7 +59,7 @@ class BackyardController
 
         }
 
-        PJAXLoader::run($page_title, $view_path, $nav_config);
+        PJAXLoader::run($page_title, $view_path, $nav_config, $page_data);
 
     }// end function post
 

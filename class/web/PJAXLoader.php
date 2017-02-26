@@ -22,9 +22,10 @@ class PJAXLoader
 
     }// end function getPJAXContainer
 
-    public static function run($page_title, $url, $nav_config = array())
+    public static function run($page_title, $url, $nav_config = array(), $page_data = array())
     {
 
+        extract($page_data);
         $view_path = PAGE_ROOT.$url;
         if (!file_exists($view_path)) {
             echo 'View file missing:'.$view_path;
