@@ -42,7 +42,8 @@ abstract class DataModel
             $query_instance = $this->dao_obj->select($query_params);
 
             if (count($query_instance) == 0) {
-                throw new RuntimeException(get_class($this).': id '.$instance_data.' not exists.');
+                $this->reset();
+                return;
             }
 
             foreach ($query_instance as $row_data) {

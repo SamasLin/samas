@@ -12,7 +12,7 @@ trait LazyGet
         } else if (method_exists($this, $method)) {
             return $this->$method();
         } else {
-            if (isset($this->$key) && $this->$key !== false) {
+            if ($key == 'id' || (isset($this->$key) && $this->$key !== false)) {
                 return $this->$key;
             } else {
                 $message = get_class($this).': '.
