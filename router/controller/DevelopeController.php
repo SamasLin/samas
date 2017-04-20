@@ -25,47 +25,47 @@ class DevelopeController
 
         switch ($action_id) {
 
-            case 'arrange-database':
+            case 'database-arrange':
                 $page_title = 'Arrange Database Page';
                 $view_path = '/develope/database-arrange.php';
                 break;
 
-            case 'create-table':
+            case 'table-create':
                 $page_title = 'Create Table Page';
                 $view_path = '/develope/table-create.php';
                 break;
 
-            case 'drop-table':
+            case 'table-drop':
                 $page_title = 'Drop Table Page';
                 $view_path = '/develope/table-drop.php';
                 break;
 
-            case 'export-table':
+            case 'table-export':
                 $page_title = 'Export Table Page';
                 $view_path = '/develope/table-export.php';
                 break;
 
-            case 'import-table':
+            case 'table-import':
                 $page_title = 'Import Table Page';
                 $view_path = '/develope/table-import.php';
                 break;
 
-            case 'truncate-data':
+            case 'data-truncate':
                 $page_title = 'Truncate Data Page';
                 $view_path = '/develope/data-truncate.php';
                 break;
 
-            case 'export-data':
+            case 'data-export':
                 $page_title = 'Export Data Page';
                 $view_path = '/develope/data-export.php';
                 break;
 
-            case 'import-data':
+            case 'data-import':
                 $page_title = 'Import Data Page';
                 $view_path = '/develope/data-import.php';
                 break;
 
-            case 'create-router':
+            case 'router-create':
                 $page_title = 'Create Router Page';
                 $view_path = '/develope/router-create.php';
                 break;

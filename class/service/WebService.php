@@ -244,22 +244,22 @@ class WebService
             $nav_array['開發'] = array(
                 '測試 PHP'  => '/develope/php-test',
                 'divider',
-                '建立資料表' => '/develope/create-table',
-                '刪除資料表' => '/develope/drop-table',
+                '建立資料表' => '/develope/table-create',
+                '刪除資料表' => '/develope/table-drop',
                 '資料表處理' => array(
-                    '匯出資料表結構' => '/develope/export-table',
-                    '匯入資料表結構' => '/develope/import-table'
+                    '匯出資料表結構' => '/develope/table-export',
+                    '匯入資料表結構' => '/develope/table-export'
                 ),
                 'divider',
-                '清空資料表' => '/develope/truncate-data',
+                '清空資料表' => '/develope/data-truncate',
                 '資料表內容' => array(
-                    '匯出資料表內容' => '/develope/export-data',
-                    '匯入資料表內容' => '/develope/import-data'
+                    '匯出資料表內容' => '/develope/data-export',
+                    '匯入資料表內容' => '/develope/data-import'
                 ),
                 'divider',
-                '同步資料庫' => '/develope/arrange-database',
+                '同步資料庫' => '/develope/database-arrange',
                 'divider',
-                '網站接口' => '/develope/create-router',
+                '網站接口' => '/develope/router-create',
                 'divider',
                 'PHP Info' => '/develope/phpinfo'
             );

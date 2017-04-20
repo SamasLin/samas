@@ -2,6 +2,7 @@
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333333;
 }
+
 /* tune bootstrap css */
 .navbar .nav .active > a:hover {
     cursor: default;
@@ -53,12 +54,10 @@ select:focus:invalid:focus {
     display: none;
     z-index: 10000;
 }
-
 .error-help {
     display: none;
     color: #B94A48;
 }
-
 #main-section {
     width: 1200px;
     margin: 0 auto;
