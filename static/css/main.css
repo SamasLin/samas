@@ -59,7 +59,8 @@ select:focus:invalid:focus {
     color: #B94A48;
 }
 #main-section {
-    width: 1200px;
+    width: 100%;
+    min-width: 500px;
     margin: 0 auto;
 }
 

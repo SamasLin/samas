@@ -17,15 +17,15 @@ deny from all
     ErrorDocument 405 /error/method-not-allowed
     ErrorDocument 503 /error/service-unavailable
 
-    RedirectMatch permanent ^/action/.*$ /error/page-not-found
-    RedirectMatch permanent ^/api/.*$ /error/page-not-found
-    RedirectMatch permanent ^/asset/.*$ /error/page-not-found
-    RedirectMatch permanent ^/class/.*$ /error/page-not-found
-    RedirectMatch permanent ^/component/.*$ /error/page-not-found
-    RedirectMatch permanent ^/config/.*$ /error/page-not-found
-    RedirectMatch permanent ^/controller/.*$ /error/page-not-found
-    RedirectMatch permanent ^/layout/.*$ /error/page-not-found
-    RedirectMatch permanent ^/view/.*$ /error/page-not-found
+    RedirectMatch permanent ^/action/.*\..*$ /error/page-not-found
+    RedirectMatch permanent ^/api/.*\..*$ /error/page-not-found
+    RedirectMatch permanent ^/asset/.*\..*$ /error/page-not-found
+    RedirectMatch permanent ^/class/.*\..*$ /error/page-not-found
+    RedirectMatch permanent ^/component/.*\..*$ /error/page-not-found
+    RedirectMatch permanent ^/config/.*\..*$ /error/page-not-found
+    RedirectMatch permanent ^/controller/.*\..*$ /error/page-not-found
+    RedirectMatch permanent ^/layout/.*\..*$ /error/page-not-found
+    RedirectMatch permanent ^/view/.*\..*$ /error/page-not-found
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d

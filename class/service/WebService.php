@@ -202,30 +202,31 @@ class WebService
     public static function showError($error_code = 0)
     {
 
+        $page_data = array('message' => $error_code);
         switch ($error_code) {
-        case '0':
+        case 0:
             $page_title = '首頁';
             $view_path = '/index.php';
             break;
 
-        case '405':
+        case 405:
             $page_title = '存取方式錯誤';
             $view_path = '/error/method-not-allowed.php';
             break;
 
-        case '500':
+        case 500:
             $page_title = '系統發生錯誤';
             $view_path = '/error/service-unavailable.php';
             break;
 
-        case '404':
+        case 404:
         default:
             $page_title = '頁面找不到';
             $view_path = '/error/page-not-found.php';
             break;
 
         }
-        PJAXLoader::run($page_title, $view_path, array('nav_bar'));
+        PJAXLoader::run($page_title, $view_path, array('nav_bar'), $page_data);
         exit;
 
     }// end function showError
