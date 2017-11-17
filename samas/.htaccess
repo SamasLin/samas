@@ -1,0 +1,30 @@
+# Samas RewriteRule
+# Nginx config: append below line into "location /" section:
+# try_files $uri $uri/ /index.php?uri=$uri&$args;
+
+allow from all
+
+<Files ~ "^\.(htaccess)$">
+deny from all
+</Files>
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+    RewriteBase /
+
+    ErrorDocument 404 /error/page-not-found
+    ErrorDocument 405 /error/method-not-allowed
+    ErrorDocument 503 /error/service-unavailable
+
+    RedirectMatch permanent ^/asset/.*$ /error/page-not-found
+    RedirectMatch permanent ^/class/.*$ /error/page-not-found
+    RedirectMatch permanent ^/config/.*$ /error/page-not-found
+    RedirectMatch permanent ^/lib/.*$ /error/page-not-found
+    RedirectMatch permanent ^/router/.*$ /error/page-not-found
+    RedirectMatch permanent ^/view/.*$ /error/page-not-found
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php/$1 [QSA,NC,L]
+</IfModule>
